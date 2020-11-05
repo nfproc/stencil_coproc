@@ -275,7 +275,7 @@ module AXI_FIFO (
     // (d) Write Data ÇÃèàóù
     logic write_empty, write_full;
     
-    assign AXI_M_WVALID = ~ write_empty;
+    assign AXI_M_WVALID = ~ write_empty & (~ wl_fifo_empty | ~ wfirst);
     assign WRITE_READY  = ~ write_full;
 
     fifo #(
